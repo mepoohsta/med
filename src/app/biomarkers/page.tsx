@@ -1,8 +1,16 @@
 import { BiomarkerSummary } from "@/components/ui/biomarker-summary";
 import { getResultsSummary } from "../../backend/results";
+import { auth } from "@/auth";
+import { notFound } from "next/navigation";
 
 export default async function Home() {
-  const summary = await getResultsSummary();
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return <>Unauthenticated</>;
+  }
+
+  const summary = await getResultsSummary(session.user.id);
 
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">

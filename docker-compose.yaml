@@ -1,16 +1,14 @@
 services:
-  mysql_db:
-    image: mysql:8.0
-    container_name: mysql_container
+  db:
+    image: postgres:17
     environment:
-      MYSQL_ROOT_PASSWORD: mysql
-      MYSQL_DATABASE: med
-      MYSQL_USER: mysql
-      MYSQL_PASSWORD: mysql
+      POSTGRES_USER: med
+      POSTGRES_PASSWORD: med
+      POSTGRES_DB: med
     ports:
-      - "3306:3306" 
+      - "5432:5432"
     volumes:
-      - mysql_data:/var/lib/mysql
+      - pgdata:/var/lib/postgresql/data
     networks:
       - network
 
@@ -19,4 +17,4 @@ networks:
     driver: bridge
 
 volumes:
-  mysql_data:
+  pgdata:

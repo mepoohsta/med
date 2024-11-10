@@ -1,15 +1,22 @@
+import { auth } from "@/auth";
 import { getMarkerResults } from "@/backend/results";
 import dayjs from "dayjs";
 import { notFound } from "next/navigation";
 
 type Params = {
-  marker: string;
+  markercode: string;
 };
 
 export default async function Page({ params }: { params: Params }) {
-  const { marker } = params;
+  const { markercode } = params;
 
-  const results = await getMarkerResults(marker);
+  const session = await auth();
+
+  if (!session?.user?.id) {
+    return <>Unauthenticated</>;
+  }
+
+  const results = await getMarkerResults(session.user.id, markercode);
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
       <div className="">History</div>
