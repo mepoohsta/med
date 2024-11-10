@@ -1,8 +1,9 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+import { Home } from "lucide-react";
 
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
@@ -10,6 +11,8 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { auth } from "@/auth";
+import Link from "next/link";
 
 // Menu items.
 const items = [
@@ -20,7 +23,9 @@ const items = [
   },
 ];
 
-export function AppSidebar() {
+export async function AppSidebar() {
+  const session = await auth();
+
   return (
     <Sidebar>
       <SidebarContent>
@@ -42,6 +47,15 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <Link href={session ? "/api/auth/signout" : "/api/auth/signin"}>
+              {session ? "Logout" : "Login"}
+            </Link>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   );
 }
