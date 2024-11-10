@@ -1,7 +1,6 @@
 import { auth } from "@/auth";
 import { getMarkerResults } from "@/backend/results";
 import dayjs from "dayjs";
-import { notFound } from "next/navigation";
 
 type Params = {
   markercode: string;
