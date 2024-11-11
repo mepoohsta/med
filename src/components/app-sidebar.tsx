@@ -1,4 +1,4 @@
-import { Home } from "lucide-react";
+import { ChartColumn, FileStack } from "lucide-react";
 
 import {
   Sidebar,
@@ -19,7 +19,12 @@ const items = [
   {
     title: "Biomarkers",
     url: "/biomarkers",
-    icon: Home,
+    icon: ChartColumn,
+  },
+  {
+    title: "Docs",
+    url: "/docs",
+    icon: FileStack,
   },
 ];
 

@@ -126,4 +126,14 @@ VALUES
     ('seconds'),
     ('%'),
     ('ratio'),
-    ('mg/24hr') ON CONFLICT (id) DO NOTHING
+    ('mg/24hr') ON CONFLICT (id) DO NOTHING;
+
+CREATE TABLE
+    docs (
+        id SERIAL,
+        title VARCHAR(255),
+        date DATE,
+        url VARCHAR(255) NOT NULL,
+        user_id INTEGER NOT NULL,
+        PRIMARY KEY (id)
+    );

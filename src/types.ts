@@ -7,3 +7,10 @@ export type Result = {
   unit?: string;
   title?: string;
 };
+
+export type Doc = {
+  id: string;
+  url: string;
+  title?: string;
+  date?: string;
+};
