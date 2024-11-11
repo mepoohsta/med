@@ -3,11 +3,11 @@ import { getMarkerResults } from "@/backend/results";
 import dayjs from "dayjs";
 
 type Params = {
-  markercode: string;
+  marker: string;
 };
 
 export default async function Page({ params }: { params: Params }) {
-  const { markercode } = params;
+  const { marker } = params;
 
   const session = await auth();
 
@@ -15,7 +15,7 @@ export default async function Page({ params }: { params: Params }) {
     return <>Unauthenticated</>;
   }
 
-  const results = await getMarkerResults(session.user.id, markercode);
+  const results = await getMarkerResults(session.user.id, marker);
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
       <div className="">History</div>

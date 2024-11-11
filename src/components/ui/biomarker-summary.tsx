@@ -15,18 +15,18 @@ import dayjs from "dayjs";
 import Link from "next/link";
 
 type Props = {
-  code: string;
+  markerId: string;
   results: Result[];
 };
 
-export function BiomarkerSummary({ code, results }: Props) {
+export function BiomarkerSummary({ markerId, results }: Props) {
   const lastResult = results[results.length - 1];
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>
-          <Link href={"/biomarkers/" + code}>{code}</Link>
+          <Link href={"/biomarkers/" + markerId}>{markerId}</Link>
         </CardTitle>
       </CardHeader>
       <CardFooter className="flex-col items-start gap-2 text-sm">

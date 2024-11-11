@@ -1,7 +1,6 @@
 export type Result = {
   id: number;
-  marker_id: number;
-  code: string;
+  marker_id: string;
   value: string;
   date: Date;
   abnormal: boolean;
