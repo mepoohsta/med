@@ -43,6 +43,41 @@ CREATE TABLE
     );
 
 CREATE TABLE
+    units (id VARCHAR(255), PRIMARY KEY (id));
+
+INSERT INTO
+    units (id)
+VALUES
+    ('g/L'),
+    ('mg/dL'),
+    ('ug/dL'),
+    ('ng/mL'),
+    ('pg/mL'),
+    ('mmol/L'),
+    ('umol/L'),
+    ('mEq/L'),
+    ('IU/L'),
+    ('U/L'),
+    ('mL/min'),
+    ('mL/min/1.73m²'),
+    ('10^9/L'),
+    ('10^12/L'),
+    ('U/gHb'),
+    ('mmHg'),
+    ('pmol/L'),
+    ('nmol/L'),
+    ('pH'),
+    ('ng/dL'),
+    ('ug/L'),
+    ('mOsm/kg'),
+    ('kg/m²'),
+    ('cm'),
+    ('seconds'),
+    ('%'),
+    ('ratio'),
+    ('mg/24hr') ON CONFLICT (id) DO NOTHING;
+
+CREATE TABLE
     markers (
         id VARCHAR(255),
         default_title VARCHAR(255) NOT NULL,
@@ -83,9 +118,6 @@ VALUES
     ('ALB', 'Albumin', 'g/dL') ON CONFLICT (id) DO NOTHING;
 
 CREATE TABLE
-    units (id VARCHAR(255), PRIMARY KEY (id));
-
-CREATE TABLE
     results (
         id SERIAL,
         marker_id VARCHAR(255) NOT NULL,
@@ -95,38 +127,6 @@ CREATE TABLE
         user_id INTEGER NOT NULL,
         PRIMARY KEY (id)
     );
-
-INSERT INTO
-    units (id)
-VALUES
-    ('g/L'),
-    ('mg/dL'),
-    ('ug/dL'),
-    ('ng/mL'),
-    ('pg/mL'),
-    ('mmol/L'),
-    ('umol/L'),
-    ('mEq/L'),
-    ('IU/L'),
-    ('U/L'),
-    ('mL/min'),
-    ('mL/min/1.73m²'),
-    ('10^9/L'),
-    ('10^12/L'),
-    ('U/gHb'),
-    ('mmHg'),
-    ('pmol/L'),
-    ('nmol/L'),
-    ('pH'),
-    ('ng/dL'),
-    ('ug/L'),
-    ('mOsm/kg'),
-    ('kg/m²'),
-    ('cm'),
-    ('seconds'),
-    ('%'),
-    ('ratio'),
-    ('mg/24hr') ON CONFLICT (id) DO NOTHING;
 
 CREATE TABLE
     docs (
