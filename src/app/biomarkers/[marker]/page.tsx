@@ -22,12 +22,10 @@ export default async function Page({ params }: { params: Params }) {
 
       {results.map((result) => {
         return (
-          <>
-            <div>
-              {dayjs(result.date).format("MMM, d, YYYY")} {result.value}{" "}
-              {result.unit}
-            </div>
-          </>
+          <div key={result.id}>
+            {dayjs(result.date).format("MMM, d, YYYY")} {result.value}{" "}
+            {result.unit}
+          </div>
         );
       })}
     </div>
